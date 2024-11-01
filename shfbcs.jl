@@ -556,6 +556,19 @@ function density(nucl::Nucleus)
             end
         end
     end
+    for iq=1:2
+        if iq == 1
+            N=nucl.Z
+        else
+            N=nucl.N
+        end
+        rms=0.0
+        for ir=1:ngrid
+            rms+=4π*nucl.rho[ir,iq]*(ir*dr)^4*dr
+        end
+        nucl.radii[iq]=sqrt(rms/N)
+    end
+    nucl.radii[3]=sqrt((nucl.radii[1]^2*nucl.Z+nucl.radii[2]^2*nucl.N)/(nucl.A))
 end
 
 function energy(mf::MeanField, nucl::Nucleus, skm::Skyrme)

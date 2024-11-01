@@ -22,6 +22,7 @@ mutable struct Nucleus
     eqp
     v2
     eferm
+    radii
     nuclmassc
     rho
     tau
@@ -40,6 +41,7 @@ mutable struct Nucleus
                   zeros(Float64,nstatemax,2), zeros(Float64,nstatemax,2),
                   zeros(Float64,nstatemax,2),
                   [-8.0, -8.0],
+                  zeros(Float64,3),
                   nuclmass,
                   zeros(Float64,ngrid,2), zeros(Float64,ngrid,2),
                   zeros(Float64,ngrid,2), zeros(Float64,ngrid,2),
